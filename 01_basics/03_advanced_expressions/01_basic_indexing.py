@@ -11,11 +11,14 @@ def increment_odd(x):
     incremented by 1.
     """
 
-    raise NotImplementedError("TODO: implement the function.")
+    # raise NotImplementedError("TODO: implement the function.")
+
+    y = T.inc_subtensor(x[1::2], 1.)
+    return y
 
 if __name__ == "__main__":
     x = T.vector()
     xv = np.zeros((4,), dtype=x.dtype)
     yv = increment_odd(x).eval({x:xv})
     assert np.allclose(yv, np.array([0., 1., 0., 1.]))
-    print "SUCCESS!"
+    print("SUCCESS!")

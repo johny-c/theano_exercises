@@ -2,29 +2,36 @@
 # python 01_scalar.py to see if your solution works!
 #
 import numpy as np
-from theano import function
-raise NotImplementedError("TODO: add any other imports you need")
+from theano import function, tensor as T
+# raise NotImplementedError("TODO: add any other imports you need")
+
 
 def make_scalar():
     """
     Returns a new Theano scalar.
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    return T.scalar()
+
 
 def log(x):
     """
     Returns the logarithm of a Theano scalar x.
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    return T.log(x)
+
 
 def add(x, y):
     """
     Adds two theano scalars together and returns the result.
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    return x + y
+
 
 if __name__ == "__main__":
     a = make_scalar()
@@ -37,4 +44,4 @@ if __name__ == "__main__":
     actual = f(a,b)
     expected = 1. + np.log(2.)
     assert np.allclose(actual, expected)
-    print "SUCCESS!"
+    print("SUCCESS!")

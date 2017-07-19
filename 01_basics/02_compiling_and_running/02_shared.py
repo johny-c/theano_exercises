@@ -2,7 +2,9 @@
 # python 01_function.py to see if your solution works!
 #
 import numpy as np
-raise NotImplementedError("TODO: add any other imports you need")
+# raise NotImplementedError("TODO: add any other imports you need")
+from theano import shared, tensor as T, function
+
 
 def make_shared(shape):
     """
@@ -10,7 +12,11 @@ def make_shared(shape):
     shape.
     You can use any value you want.
     """
-    raise NotImplementedError("TODO: implement the function")
+    # raise NotImplementedError("TODO: implement the function")
+
+    return shared(np.zeros(shape))
+
+
 
 def exchange_shared(a, b):
     """
@@ -18,7 +24,11 @@ def exchange_shared(a, b):
     b: a theano shared variable
     Uses get_value and set_value to swap the values stored in a and b
     """
-    raise NotImplementedError("TODO: implement the function")
+    # raise NotImplementedError("TODO: implement the function")
+    temp = a.get_value()
+    a.set_value(b.get_value())
+    b.set_value(temp)
+
 
 def make_exchange_func(a, b):
     """
@@ -29,8 +39,12 @@ def make_exchange_func(a, b):
     values in a and b
     f should not return anything
     """
-    raise NotImplementedError("TODO: implement the function")
+    # raise NotImplementedError("TODO: implement the function")
 
+    updates = dict()
+    updates = [(a, b), (b, a)]
+    f = function([], updates=updates)
+    return f
 
 
 if __name__ == "__main__":
@@ -50,4 +64,4 @@ if __name__ == "__main__":
     assert np.all(a.get_value() == 0.)
     assert np.all(b.get_value() == 1.)
 
-    print "SUCCESS!"
+    print("SUCCESS!")

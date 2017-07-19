@@ -1,8 +1,8 @@
 # Fill in the TODOs in this exercise, then run
 # python 03_tensor.py to see if your solution works!
 import numpy as np
-from theano import function
-raise NotImplementedError("TODO: add any other imports you need")
+from theano import function, tensor as T
+# raise NotImplementedError("TODO: add any other imports you need")
 
 def make_tensor(dim):
     """
@@ -11,7 +11,12 @@ def make_tensor(dim):
     (You can use any dtype you like)
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+
+    tensor_type = T.TensorType(broadcastable=(False,)*dim, dtype='float32')
+
+    return tensor_type()
+
 
 def broadcasted_add(a, b):
     """
@@ -24,7 +29,10 @@ def broadcasted_add(a, b):
     for all i, j, k, l
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    return a.dimshuffle((2,'x', 1, 0)) + b
+
+
 
 def partial_max(a):
     """
@@ -37,7 +45,10 @@ def partial_max(a):
     for all i, j
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    b = a.max(axis=(1,2))
+    return b
+
 
 if __name__ == "__main__":
     a = make_tensor(3)
@@ -56,4 +67,4 @@ if __name__ == "__main__":
     actual = f(a_value, b_value)
 
     assert np.allclose(actual, expected), (actual, expected)
-    print "SUCCESS!"
+    print("SUCCESS!")

@@ -2,22 +2,24 @@
 # python 02_vector_mat.py to see if your solution works!
 #
 import numpy as np
-from theano import function
-raise NotImplementedError("TODO: add any other imports you need")
+from theano import function, tensor as T
+#raise NotImplementedError("TODO: add any other imports you need")
 
 def make_vector():
     """
     Returns a new Theano vector.
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+#    raise NotImplementedError("TODO: implement this function.")
+    return T.vector()
 
 def make_matrix():
     """
     Returns a new Theano matrix.
     """
+    return T.matrix()
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
 
 def elemwise_mul(a, b):
     """
@@ -26,7 +28,9 @@ def elemwise_mul(a, b):
     Returns the elementwise product of a and b
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+
+    return a * b
 
 def matrix_vector_mul(a, b):
     """
@@ -35,7 +39,9 @@ def matrix_vector_mul(a, b):
     Returns the matrix-vector product of a and b
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+    return T.dot(a, b)
+
 
 if __name__ == "__main__":
     a = make_vector()
@@ -56,4 +62,4 @@ if __name__ == "__main__":
     actual = f(a_value, b_value, d_value)
 
     assert np.allclose(actual, expected)
-    print "SUCCESS!"
+    print("SUCCESS!")

@@ -1,8 +1,8 @@
 # Fill in the TODOs in this exercise, then run
 # python 01_function.py to see if your solution works!
 #
-from theano import tensor as T
-raise NotImplementedError("TODO: add any other imports you need")
+from theano import tensor as T, function
+# raise NotImplementedError("TODO: add any other imports you need")
 
 def evaluate(x, y, expr, x_value, y_value):
     """
@@ -16,7 +16,10 @@ def evaluate(x, y, expr, x_value, y_value):
     and y_value is substituted for y
     """
 
-    raise NotImplementedError("TODO: implement this function.")
+    # raise NotImplementedError("TODO: implement this function.")
+
+    f = function([x, y], expr)
+    return f(x_value, y_value)
 
 
 if __name__ == "__main__":
@@ -24,4 +27,4 @@ if __name__ == "__main__":
     y = T.iscalar()
     z = x + y
     assert evaluate(x, y, z, 1, 2) == 3
-    print "SUCCESS!"
+    print("SUCCESS!")
